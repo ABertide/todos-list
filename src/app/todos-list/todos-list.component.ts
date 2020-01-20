@@ -31,13 +31,18 @@ export class TodosListComponent implements OnInit {
     dataSource;
 
     ngOnInit() {
-        this.listTodos = this.todoService.list();
+        this.listTodos = this.todoService.list().pipe();
         let data = [];
         this.listTodos.forEach(todo => {
             data.push(todo);
         });
         console.log(data);
-        this.dataSource = new MatTableDataSource(data);
+        this.todoService
+            .list()
+            .subscribe(
+                todos => (this.dataSource = new MatTableDataSource(todos))
+            );
+        // this.dataSource = new MatTableDataSource(data);
         console.log(this.dataSource);
         console.log('ok');
         // this.listTodos.sort(function(x, y) {
