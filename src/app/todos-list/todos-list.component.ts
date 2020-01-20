@@ -15,11 +15,6 @@ import { ok } from 'assert';
 export class TodosListComponent implements OnInit {
     public listTodos: Observable<todo>;
     constructor(private router: Router, private todoService: TodoService) {}
-    // listTodos = [
-    //     { title: 'first', description: 'tototo', state: false },
-    //     { title: 'scd', description: 'tata', state: true },
-    //     { title: 'fff', description: 'sss', state: false },
-    // ];
 
     displayedColumns: string[] = [
         'title',
@@ -28,39 +23,36 @@ export class TodosListComponent implements OnInit {
         'edit',
         'del',
     ];
+    allTodos: todo[];
     dataSource;
 
     ngOnInit() {
-        this.listTodos = this.todoService.list().pipe();
-        let data = [];
-        this.listTodos.forEach(todo => {
-            data.push(todo);
-        });
-        console.log(data);
-        this.todoService
-            .list()
-            .subscribe(
-                todos => (this.dataSource = new MatTableDataSource(todos))
-            );
-        // this.dataSource = new MatTableDataSource(data);
-        console.log(this.dataSource);
-        console.log('ok');
-        // this.listTodos.sort(function(x, y) {
-        //     return x.state === y.state ? 0 : x.state ? 1 : -1;
-        // });
+        this.todoService.list().subscribe(todos => (this.allTodos = todos));
+        this.dataSource = new MatTableDataSource(this.allTodos);
+        this.allTodos
+            .sort((x, y) => {
+                return x.id > y.id ? -1 : 1;
+            })
+            .sort((x, y) => {
+                return x.state === y.state ? 0 : x.state ? 1 : -1;
+            });
     }
 
     updateState(element) {
-        // if (this.listTodos.find(ele => ele === element).state) {
-        //     this.listTodos.find(ele => ele === element).state = false;
-        // } else {
-        //     this.listTodos.find(ele => ele === element).state = true;
-        // }
-        // this.dataSource = new MatTableDataSource(
-        //     this.listTodos.sort(function(x, y) {
-        //         return x.state === y.state ? 0 : x.state ? 1 : -1;
-        //     })
-        // );
+        if (this.allTodos.find(ele => ele === element).state) {
+            this.allTodos.find(ele => ele === element).state = false;
+        } else {
+            this.allTodos.find(ele => ele === element).state = true;
+        }
+        this.dataSource = new MatTableDataSource(
+            this.allTodos
+                .sort((x, y) => {
+                    return x.id > y.id ? -1 : 1;
+                })
+                .sort((x, y) => {
+                    return x.state === y.state ? 0 : x.state ? 1 : -1;
+                })
+        );
     }
 
     editTodo(id) {
@@ -69,10 +61,16 @@ export class TodosListComponent implements OnInit {
     }
 
     deleteTodo(id) {
+        console.log(id);
         this.todoService.remove(id);
-    }
-
-    public trackByToodFun(index, item) {
-        return item.id;
+        this.dataSource = new MatTableDataSource(
+            this.allTodos
+                .sort((x, y) => {
+                    return x.id > y.id ? -1 : 1;
+                })
+                .sort((x, y) => {
+                    return x.state === y.state ? 0 : x.state ? 1 : -1;
+                })
+        );
     }
 }

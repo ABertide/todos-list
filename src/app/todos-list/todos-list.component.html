@@ -19,7 +19,7 @@
   <ng-container matColumnDef="edit">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit</th>
     <td mat-cell *matCellDef="let element">
-      <button type="button" (onclick)="editTodo(element)">
+      <button type="button" (click)="editTodo(element)">
         <mat-icon>create</mat-icon>
       </button>
     </td>
@@ -27,7 +27,7 @@
   <ng-container matColumnDef="del">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Delete</th>
     <td mat-cell *matCellDef="let element">
-      <button type="button" (onclick)="deleteTodo(element)">
+      <button mat-icon-button (click)="deleteTodo(element.id)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
@@ -36,38 +36,3 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-
-
-
-
-
-<!-- <div class="mt-5">
-  <div class="col-md-12">
-    <fieldset>
-      <legend class="text-info">List Todo</legend>
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr class="table-primary">
-              <th scope="col">Id</th>
-              <th scope="col">Title</th>
-              <th scope="col">Description</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let todo of listTodos | async ; trackBy:trackByToodFun;">
-              <td scope="row">{{todo.id}}</td>
-              <td>{{todo.title}}</td>
-              <td>{{todo.description}}</td>
-              <td>
-                <button type="button" class="btn btn-info mr-2" (click)="editRecord(todo.id)">Edit</button>
-                <button type="button" class="btn btn-danger" (click)="deleteRecord(todo.id)">Delete</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </fieldset>
-  </div>
-</div> -->
