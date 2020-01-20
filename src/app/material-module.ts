@@ -5,6 +5,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
     exports: [
@@ -14,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
         MatCheckboxModule,
         MatTableModule,
         MatIconModule,
+        MatCardModule,
     ],
 })
 export class MaterialModule {}

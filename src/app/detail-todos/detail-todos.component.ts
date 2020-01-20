@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Params, ActivatedRoute, Router } from '@angular/router';
 import { TodoService } from '../todo.service';
 
 @Component({
-    selector: 'app-edit-todos',
-    templateUrl: './edit-todos.component.html',
-    styleUrls: ['./edit-todos.component.scss'],
+    selector: 'app-detail-todos',
+    templateUrl: './detail-todos.component.html',
+    styleUrls: ['./detail-todos.component.scss'],
 })
-export class EditTodosComponent implements OnInit {
+export class DetailTodosComponent implements OnInit {
     private todoSub;
     public todo;
     private todoId: number;
@@ -30,15 +30,7 @@ export class EditTodosComponent implements OnInit {
             });
         });
     }
-    onSubmitEditForm(form) {
-        if (form.valid) {
-            this.todoService.edit(this.todoId, this.todo);
-            this.router.navigate(['/todos']);
-        } else {
-            console.log('Form Invalid');
-        }
-    }
-    ngOnDestroy() {
-        this.todoSub.unsubscribe();
+    goBack() {
+        this.router.navigate(['/todos']);
     }
 }

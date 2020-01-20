@@ -56,7 +56,6 @@ export class TodosListComponent implements OnInit {
     }
 
     editTodo(id) {
-        console.log('Edit record ID>>>', id);
         this.router.navigate(['/edit', id]);
     }
 
@@ -72,5 +71,8 @@ export class TodosListComponent implements OnInit {
                     return x.state === y.state ? 0 : x.state ? 1 : -1;
                 })
         );
+    }
+    goDetailTodo(id) {
+        this.router.navigate(['/detail', id]);
     }
 }

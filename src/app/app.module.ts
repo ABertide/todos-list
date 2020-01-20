@@ -13,12 +13,14 @@ import { StoreModule } from '@ngrx/store';
 import { FormsModule } from '@angular/forms';
 
 import { todoReducers } from './reducers/todo-reducers';
+import { DetailTodosComponent } from './detail-todos/detail-todos.component';
 @NgModule({
     declarations: [
         AppComponent,
         TodosListComponent,
         AddTodosComponent,
         EditTodosComponent,
+        DetailTodosComponent,
     ],
     imports: [
         BrowserModule,

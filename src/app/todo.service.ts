@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Store, select, createSelector } from '@ngrx/store';
 
 import * as TodoActions from './actions/todo.actions';
 
 import * as fromTodoReducer from './reducers/todo-reducers';
-import { createSelector } from '@ngrx/store';
 import { Dictionary } from '@ngrx/entity';
 
 import { todo } from './models/todo-model';
@@ -16,6 +15,7 @@ import { AppState } from './app.state';
 export class TodoService {
     private allTodos;
     private todoById;
+
     constructor(private store: Store<AppState>) {
         this.allTodos = createSelector(fromTodoReducer.selectAll, entities => {
             return entities;
@@ -27,6 +27,26 @@ export class TodoService {
                 return entities[props.id];
             }
         );
+        [
+            {
+                id: 1,
+                title: 'first todo',
+                description: 'create project',
+                state: false,
+            },
+            {
+                id: 2,
+                title: 'scd todo',
+                description: 'write code',
+                state: true,
+            },
+            {
+                id: 3,
+                title: 'third todo',
+                description: 'finish',
+                state: false,
+            },
+        ].forEach(todo => this.store.dispatch(new TodoActions.AddTodo(todo)));
     }
 
     public add(data: todo) {

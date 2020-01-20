@@ -1,3 +1,16 @@
 table {
   width: 100%;
 }
+
+tr.example-element-row:hover {
+  background: lightblue;
+  z-index: 1;
+}
+
+.in-progress {
+  background: lightsalmon;
+}
+
+.completed {
+  background: lightgreen;
+}
