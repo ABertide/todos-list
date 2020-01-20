@@ -9,13 +9,26 @@ import { TodosListComponent } from './todos-list/todos-list.component';
 import { AddTodosComponent } from './add-todos/add-todos.component';
 import { EditTodosComponent } from './edit-todos/edit-todos.component';
 
+import { StoreModule } from '@ngrx/store';
+import { FormsModule } from '@angular/forms';
+
+import { todoReducers } from './reducers/todo-reducers';
 @NgModule({
-    declarations: [AppComponent, TodosListComponent, AddTodosComponent, EditTodosComponent],
+    declarations: [
+        AppComponent,
+        TodosListComponent,
+        AddTodosComponent,
+        EditTodosComponent,
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         MaterialModule,
+        FormsModule,
+        StoreModule.forRoot({
+            todos: todoReducers,
+        }),
     ],
     providers: [],
     bootstrap: [AppComponent],
