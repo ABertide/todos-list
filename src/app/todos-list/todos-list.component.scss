@@ -2,9 +2,11 @@ table {
   width: 100%;
 }
 
-tr.example-element-row:hover {
+
+
+td.example-element-row:hover {
   background: lightblue;
-  z-index: 1;
+  z-index: 0;
 }
 
 .in-progress {

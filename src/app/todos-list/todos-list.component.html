@@ -3,14 +3,7 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
     <td mat-cell *matCellDef="let element" [ngClass]="[
           element.state ? 'completed' : 'in-progress'
-        ]">{{ element.title }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="description">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-    <td mat-cell *matCellDef="let element" [ngClass]="[
-          element.state ? 'completed' : 'in-progress'
-        ]">{{ element.description }}</td>
+        ]" class="example-element-row" (click)="goDetailTodo(element.id)">{{ element.title }}</td>
   </ng-container>
 
   <ng-container matColumnDef="state">
@@ -44,7 +37,6 @@
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let element; columns: displayedColumns" class="example-element-row"
-    (click)="goDetailTodo(element.id)"></tr>
+  <tr mat-row *matRowDef="let element; columns: displayedColumns"></tr>
 
 </table>

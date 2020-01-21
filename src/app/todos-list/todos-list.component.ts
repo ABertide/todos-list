@@ -16,13 +16,7 @@ export class TodosListComponent implements OnInit {
     public listTodos: Observable<todo>;
     constructor(private router: Router, private todoService: TodoService) {}
 
-    displayedColumns: string[] = [
-        'title',
-        'description',
-        'state',
-        'edit',
-        'del',
-    ];
+    displayedColumns: string[] = ['title', 'state', 'edit', 'del'];
     allTodos: todo[];
     dataSource;
 
