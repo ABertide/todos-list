@@ -11,7 +11,7 @@ const appRoutes: Routes = [
     { path: 'add', component: AddTodosComponent },
     { path: 'edit/:id', component: EditTodosComponent },
     { path: 'detail/:id', component: DetailTodosComponent },
-    { path: '**', redirectTo: 'not-found' },
+    { path: '**', redirectTo: 'todos' },
 ];
 
 @NgModule({
