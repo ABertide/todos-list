@@ -107,12 +107,11 @@ MIT
 @ngrx/store
 MIT
 
-bootstrap
+angular-in-memory-web-api
 MIT
-The MIT License (MIT)
+The MIT License
 
-Copyright (c) 2011-2019 Twitter, Inc.
-Copyright (c) 2011-2019 The Bootstrap Authors
+Copyright (c) 2016 Google, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
