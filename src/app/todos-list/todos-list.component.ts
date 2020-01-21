@@ -60,7 +60,6 @@ export class TodosListComponent implements OnInit {
     }
 
     deleteTodo(id) {
-        console.log(id);
         this.todoService.remove(id);
         this.dataSource = new MatTableDataSource(
             this.allTodos
