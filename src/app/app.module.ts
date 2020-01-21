@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 
 import { todoReducers } from './reducers/todo-reducers';
 import { DetailTodosComponent } from './detail-todos/detail-todos.component';
+import { InMemDataService } from './in-mem-data.service';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 @NgModule({
     declarations: [
         AppComponent,
@@ -31,6 +33,7 @@ import { DetailTodosComponent } from './detail-todos/detail-todos.component';
         StoreModule.forRoot({
             todos: todoReducers,
         }),
+        InMemoryWebApiModule.forRoot(InMemDataService),
     ],
     providers: [],
     bootstrap: [AppComponent],
